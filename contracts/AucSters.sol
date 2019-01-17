@@ -9,6 +9,6 @@ contract AucSters {
     uint256 public totalSupply;
 
     constructor() public {
-        totalSupply = 10000000;
+        totalSupply = 1000000;
     }
 }

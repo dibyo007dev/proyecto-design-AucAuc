@@ -24,11 +24,11 @@
       "signature": "constructor"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5062989680600081905550609e806100296000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058204e49a42fde0b67fd352eb367b0af8b12d5a967c9ed2cef23dc3eee49641999ee0029",
-  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058204e49a42fde0b67fd352eb367b0af8b12d5a967c9ed2cef23dc3eee49641999ee0029",
-  "sourceMap": "123:218:0:-;;;279:60;8:9:-1;5:2;;;30:1;27;20:12;5:2;279:60:0;324:8;310:11;:22;;;;123:218;;;;;;",
-  "deployedSourceMap": "123:218:0:-;;;;;;;;;;;;;;;;;;;;;;;;246:26;;8:9:-1;5:2;;;30:1;27;20:12;5:2;246:26:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "// AucSters : ERC20 token and a cryptoCurrency governing the money transfer in auction\n \npragma solidity >=0.4.21 <0.6.0;\n\ncontract AucSters {\n    //  Constructor\n    //  Set the total number of tokens\n    //  read the total number of tokens\n    uint256 public totalSupply;\n\n    constructor() public {\n        totalSupply = 10000000;\n    }\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b50620f4240600081905550609e806100296000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058201639800d4cc47f26e38e40af9669fc6bb3879792490295ff33e146edd72684680029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058201639800d4cc47f26e38e40af9669fc6bb3879792490295ff33e146edd72684680029",
+  "sourceMap": "123:217:0:-;;;279:59;8:9:-1;5:2;;;30:1;27;20:12;5:2;279:59:0;324:7;310:11;:21;;;;123:217;;;;;;",
+  "deployedSourceMap": "123:217:0:-;;;;;;;;;;;;;;;;;;;;;;;;246:26;;8:9:-1;5:2;;;30:1;27;20:12;5:2;246:26:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "// AucSters : ERC20 token and a cryptoCurrency governing the money transfer in auction\n \npragma solidity >=0.4.21 <0.6.0;\n\ncontract AucSters {\n    //  Constructor\n    //  Set the total number of tokens\n    //  read the total number of tokens\n    uint256 public totalSupply;\n\n    constructor() public {\n        totalSupply = 1000000;\n    }\n}",
   "sourcePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
   "ast": {
     "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
@@ -97,7 +97,7 @@
             "body": {
               "id": 10,
               "nodeType": "Block",
-              "src": "300:39:0",
+              "src": "300:38:0",
               "statements": [
                 {
                   "expression": {
@@ -124,7 +124,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "3130303030303030",
+                      "hexValue": "31303030303030",
                       "id": 7,
                       "isConstant": false,
                       "isLValue": false,
@@ -132,15 +132,15 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "324:8:0",
+                      "src": "324:7:0",
                       "subdenomination": null,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_10000000_by_1",
-                        "typeString": "int_const 10000000"
+                        "typeIdentifier": "t_rational_1000000_by_1",
+                        "typeString": "int_const 1000000"
                       },
-                      "value": "10000000"
+                      "value": "1000000"
                     },
-                    "src": "310:22:0",
+                    "src": "310:21:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -148,7 +148,7 @@
                   },
                   "id": 9,
                   "nodeType": "ExpressionStatement",
-                  "src": "310:22:0"
+                  "src": "310:21:0"
                 }
               ]
             },
@@ -172,17 +172,17 @@
               "src": "300:0:0"
             },
             "scope": 12,
-            "src": "279:60:0",
+            "src": "279:59:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 13,
-        "src": "123:218:0"
+        "src": "123:217:0"
       }
     ],
-    "src": "89:252:0"
+    "src": "89:251:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
@@ -251,7 +251,7 @@
             "body": {
               "id": 10,
               "nodeType": "Block",
-              "src": "300:39:0",
+              "src": "300:38:0",
               "statements": [
                 {
                   "expression": {
@@ -278,7 +278,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "3130303030303030",
+                      "hexValue": "31303030303030",
                       "id": 7,
                       "isConstant": false,
                       "isLValue": false,
@@ -286,15 +286,15 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "324:8:0",
+                      "src": "324:7:0",
                       "subdenomination": null,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_10000000_by_1",
-                        "typeString": "int_const 10000000"
+                        "typeIdentifier": "t_rational_1000000_by_1",
+                        "typeString": "int_const 1000000"
                       },
-                      "value": "10000000"
+                      "value": "1000000"
                     },
-                    "src": "310:22:0",
+                    "src": "310:21:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -302,7 +302,7 @@
                   },
                   "id": 9,
                   "nodeType": "ExpressionStatement",
-                  "src": "310:22:0"
+                  "src": "310:21:0"
                 }
               ]
             },
@@ -326,17 +326,17 @@
               "src": "300:0:0"
             },
             "scope": 12,
-            "src": "279:60:0",
+            "src": "279:59:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 13,
-        "src": "123:218:0"
+        "src": "123:217:0"
       }
     ],
-    "src": "89:252:0"
+    "src": "89:251:0"
   },
   "compiler": {
     "name": "solc",
@@ -346,12 +346,12 @@
     "1547765671617": {
       "events": {},
       "links": {},
-      "address": "0xD6100bD1506eb7bA55653037cdCc090756e85f54",
-      "transactionHash": "0xce2adeaeceb491b4be69744621b7edc8d9569cbf31fa3831024c271a801568d7"
+      "address": "0x623eA1731C7CE874e74A8974bA33F1993a327e97",
+      "transactionHash": "0xf491891383a894fa7088c0792f1e5b9f32479ef015a8737a2e8282e9fc06ff73"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-17T23:17:08.599Z",
+  "updatedAt": "2019-01-17T23:53:48.427Z",
   "devdoc": {
     "methods": {}
   },
