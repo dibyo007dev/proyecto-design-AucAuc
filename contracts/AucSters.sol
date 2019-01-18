@@ -11,6 +11,7 @@ contract AucSters {
 
     // Mapping
     mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
 
     // Events
     event Transfer(
@@ -19,10 +20,16 @@ contract AucSters {
         uint256 _value
     );
 
+    event Approval(address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
+
+
     // Modifiers
-    modifier hasEnoughBalance(uint _value) {
+    modifier hasEnoughBalance(address _sender, uint _value) {
             // exception if account doesn't have enough balance
-        require(balanceOf[msg.sender] >= _value, "Not enough balance for the transaction");
+        require(balanceOf[_sender] >= _value, "Not enough balance for the transaction");
         _;
     }
 
@@ -38,7 +45,7 @@ contract AucSters {
     }
 
     // Transfer
-    function transfer(address _to, uint _value) public hasEnoughBalance(_value) returns(bool) {
+    function transfer(address _to, uint _value) public hasEnoughBalance(msg.sender, _value) returns(bool) {
         balanceOf[msg.sender] -= _value;
         balanceOf[_to] += _value;
 
@@ -46,6 +53,35 @@ contract AucSters {
         emit Transfer(msg.sender, _to, _value);
         
         // return a boolean
+        return true;
+    }
+
+    // Delegated Transfer
+
+
+    //approve
+    function approve(address _spender, uint256 _value) public hasEnoughBalance(msg.sender, _value) returns (bool success) {
+
+        allowance[msg.sender][_spender] = _value;
+        emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
+    //transferFrom
+    function transferFrom(address _from, address _to, uint256 _value) public hasEnoughBalance(_from, _value) returns (bool success) {
+        // require _from has enough tokens -- modifier
+        // require the caller has enough allowance
+        require(allowance[_from][msg.sender] >= _value,"transfer exceeds the allowance");
+        // change the balance
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+
+        // update the allowance
+        allowance[_from][msg.sender] -= _value;
+                 
+        // call a transfer event
+        emit Transfer(_from, _to, _value);
+
+        // return bool
         return true;
     }
 }
