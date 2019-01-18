@@ -17,27 +17,32 @@
       "signature": "0x18160ddd"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "_initialSupply",
+          "type": "uint256"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "constructor",
       "signature": "constructor"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b50620f4240600081905550609e806100296000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058201639800d4cc47f26e38e40af9669fc6bb3879792490295ff33e146edd72684680029",
-  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a723058201639800d4cc47f26e38e40af9669fc6bb3879792490295ff33e146edd72684680029",
-  "sourceMap": "123:217:0:-;;;279:59;8:9:-1;5:2;;;30:1;27;20:12;5:2;279:59:0;324:7;310:11;:21;;;;123:217;;;;;;",
-  "deployedSourceMap": "123:217:0:-;;;;;;;;;;;;;;;;;;;;;;;;246:26;;8:9:-1;5:2;;;30:1;27;20:12;5:2;246:26:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "// AucSters : ERC20 token and a cryptoCurrency governing the money transfer in auction\n \npragma solidity >=0.4.21 <0.6.0;\n\ncontract AucSters {\n    //  Constructor\n    //  Set the total number of tokens\n    //  read the total number of tokens\n    uint256 public totalSupply;\n\n    constructor() public {\n        totalSupply = 1000000;\n    }\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806100f58339810180604052602081101561003057600080fd5b81019080805190602001909291905050508060008190555050609e806100576000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a72305820ac90e1bb051609d3966d3f33fce022665f0d355a3f516380c39dda34c36d49bb0029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b6000548156fea165627a7a72305820ac90e1bb051609d3966d3f33fce022665f0d355a3f516380c39dda34c36d49bb0029",
+  "sourceMap": "123:147:0:-;;;180:88;8:9:-1;5:2;;;30:1;27;20:12;5:2;180:88:0;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;180:88:0;;;;;;;;;;;;;;;;247:14;233:11;:28;;;;180:88;123:147;;;;;;",
+  "deployedSourceMap": "123:147:0:-;;;;;;;;;;;;;;;;;;;;;;;;147:26;;8:9:-1;5:2;;;30:1;27;20:12;5:2;147:26:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "// AucSters : ERC20 token and a cryptoCurrency governing the money transfer in auction\n \npragma solidity >=0.4.21 <0.6.0;\n\ncontract AucSters {\n    uint256 public totalSupply;\n\n    constructor(uint256 _initialSupply) public {\n        totalSupply = _initialSupply;\n    }\n}",
   "sourcePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
   "ast": {
     "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
     "exportedSymbols": {
       "AucSters": [
-        12
+        14
       ]
     },
-    "id": 13,
+    "id": 15,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -60,9 +65,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 12,
+        "id": 14,
         "linearizedBaseContracts": [
-          12
+          14
         ],
         "name": "AucSters",
         "nodeType": "ContractDefinition",
@@ -72,8 +77,8 @@
             "id": 3,
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "246:26:0",
+            "scope": 14,
+            "src": "147:26:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -84,7 +89,7 @@
               "id": 2,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "246:7:0",
+              "src": "147:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -95,26 +100,26 @@
           },
           {
             "body": {
-              "id": 10,
+              "id": 12,
               "nodeType": "Block",
-              "src": "300:38:0",
+              "src": "223:45:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 8,
+                    "id": 10,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 6,
+                      "id": 8,
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "310:11:0",
+                      "src": "233:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -124,74 +129,96 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "31303030303030",
-                      "id": 7,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "kind": "number",
-                      "lValueRequested": false,
-                      "nodeType": "Literal",
-                      "src": "324:7:0",
-                      "subdenomination": null,
+                      "id": 9,
+                      "name": "_initialSupply",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "247:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_1000000_by_1",
-                        "typeString": "int_const 1000000"
-                      },
-                      "value": "1000000"
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
                     },
-                    "src": "310:21:0",
+                    "src": "233:28:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 9,
+                  "id": 11,
                   "nodeType": "ExpressionStatement",
-                  "src": "310:21:0"
+                  "src": "233:28:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 11,
+            "id": 13,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4,
+              "id": 6,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "290:2:0"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5,
+                  "name": "_initialSupply",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13,
+                  "src": "192:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "192:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "191:24:0"
             },
             "returnParameters": {
-              "id": 5,
+              "id": 7,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "300:0:0"
+              "src": "223:0:0"
             },
-            "scope": 12,
-            "src": "279:59:0",
+            "scope": 14,
+            "src": "180:88:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 13,
-        "src": "123:217:0"
+        "scope": 15,
+        "src": "123:147:0"
       }
     ],
-    "src": "89:251:0"
+    "src": "89:181:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
     "exportedSymbols": {
       "AucSters": [
-        12
+        14
       ]
     },
-    "id": 13,
+    "id": 15,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -214,9 +241,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 12,
+        "id": 14,
         "linearizedBaseContracts": [
-          12
+          14
         ],
         "name": "AucSters",
         "nodeType": "ContractDefinition",
@@ -226,8 +253,8 @@
             "id": 3,
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "246:26:0",
+            "scope": 14,
+            "src": "147:26:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -238,7 +265,7 @@
               "id": 2,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "246:7:0",
+              "src": "147:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -249,26 +276,26 @@
           },
           {
             "body": {
-              "id": 10,
+              "id": 12,
               "nodeType": "Block",
-              "src": "300:38:0",
+              "src": "223:45:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 8,
+                    "id": 10,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 6,
+                      "id": 8,
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "310:11:0",
+                      "src": "233:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -278,65 +305,87 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "31303030303030",
-                      "id": 7,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "kind": "number",
-                      "lValueRequested": false,
-                      "nodeType": "Literal",
-                      "src": "324:7:0",
-                      "subdenomination": null,
+                      "id": 9,
+                      "name": "_initialSupply",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "247:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_1000000_by_1",
-                        "typeString": "int_const 1000000"
-                      },
-                      "value": "1000000"
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
                     },
-                    "src": "310:21:0",
+                    "src": "233:28:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 9,
+                  "id": 11,
                   "nodeType": "ExpressionStatement",
-                  "src": "310:21:0"
+                  "src": "233:28:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 11,
+            "id": 13,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4,
+              "id": 6,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "290:2:0"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5,
+                  "name": "_initialSupply",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13,
+                  "src": "192:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "192:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "191:24:0"
             },
             "returnParameters": {
-              "id": 5,
+              "id": 7,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "300:0:0"
+              "src": "223:0:0"
             },
-            "scope": 12,
-            "src": "279:59:0",
+            "scope": 14,
+            "src": "180:88:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 13,
-        "src": "123:217:0"
+        "scope": 15,
+        "src": "123:147:0"
       }
     ],
-    "src": "89:251:0"
+    "src": "89:181:0"
   },
   "compiler": {
     "name": "solc",
@@ -346,12 +395,12 @@
     "1547765671617": {
       "events": {},
       "links": {},
-      "address": "0x623eA1731C7CE874e74A8974bA33F1993a327e97",
-      "transactionHash": "0xf491891383a894fa7088c0792f1e5b9f32479ef015a8737a2e8282e9fc06ff73"
+      "address": "0xF80848ed532B398E97Ac5fe8d1052482A501CcFf",
+      "transactionHash": "0xa880cdd7101a8e4f2e5cde1df145002e5395b68454e82a450834da79c441f820"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-17T23:53:48.427Z",
+  "updatedAt": "2019-01-18T00:02:56.515Z",
   "devdoc": {
     "methods": {}
   },

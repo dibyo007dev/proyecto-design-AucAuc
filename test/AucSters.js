@@ -13,6 +13,14 @@ contract("AucSters", function(accounts) {
           1000000,
           "sets totalSupply to 1000000"
         );
+        return tokenInstance.balanceOf(accounts[0]);
+      })
+      .then(adminBalance => {
+        assert.equal(
+          adminBalance.toNumber(),
+          1000000,
+          "allocates the totalSupply to the admin when deployed"
+        );
       });
   });
 });
