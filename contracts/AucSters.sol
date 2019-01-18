@@ -2,7 +2,13 @@
  
 pragma solidity >=0.4.21 <0.6.0;
 
+// SafeMath for Ops Utils
+import "./SafeMath.sol";
+
 contract AucSters {
+    
+    using SafeMath for uint;
+
     // State varables
     uint256 public totalSupply;
     string public name;
@@ -46,8 +52,8 @@ contract AucSters {
 
     // Transfer
     function transfer(address _to, uint _value) public hasEnoughBalance(msg.sender, _value) returns(bool) {
-        balanceOf[msg.sender] -= _value;
-        balanceOf[_to] += _value;
+        balanceOf[msg.sender].sub(_value);
+        balanceOf[_to].add(_value);
 
         // Trigger a transfer event
         emit Transfer(msg.sender, _to, _value);
@@ -72,11 +78,11 @@ contract AucSters {
         // require the caller has enough allowance
         require(allowance[_from][msg.sender] >= _value,"transfer exceeds the allowance");
         // change the balance
-        balanceOf[_from] -= _value;
-        balanceOf[_to] += _value;
+        balanceOf[_from].sub(_value);
+        balanceOf[_to].add(_value);
 
         // update the allowance
-        allowance[_from][msg.sender] -= _value;
+        allowance[_from][msg.sender].sub(_value);
                  
         // call a transfer event
         emit Transfer(_from, _to, _value);
