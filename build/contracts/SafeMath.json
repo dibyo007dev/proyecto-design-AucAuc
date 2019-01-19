@@ -3283,12 +3283,12 @@
     "1547830326418": {
       "events": {},
       "links": {},
-      "address": "0xd4e3332463FAB6a9c779EdCb79e0fFbca50eb5Cc",
-      "transactionHash": "0xd097b93fd03b73c904f9ae53414efa7c54dfafdbbc619cd5bedcc6fb82325b61"
+      "address": "0xb80c557B6ffa71F5b14C91Df0afBE58Ba5638d70",
+      "transactionHash": "0x67820e729bf2f7e09d64c326e54000703c5aaa765ce7c1ec9dd2fcdd8984a4a1"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-19T11:37:22.564Z",
+  "updatedAt": "2019-01-19T22:22:54.038Z",
   "devdoc": {
     "details": "Unsigned math operations with safety checks that revert on error",
     "methods": {},

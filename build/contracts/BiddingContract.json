@@ -1,0 +1,655 @@
+{
+  "contractName": "BiddingContract",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x55a373d6"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xf851a440"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_tokenContract",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor",
+      "signature": "constructor"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806102488339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610176806100d26000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806355a373d614610051578063f851a440146100a8575b600080fd5b34801561005d57600080fd5b506100666100ff565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd610125565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820a8b3ca16534cac974363b1e8ad362b60748ac9ff6ce78adecdcd7645869d6fe90029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806355a373d614610051578063f851a440146100a8575b600080fd5b34801561005d57600080fd5b506100666100ff565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd610125565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820a8b3ca16534cac974363b1e8ad362b60748ac9ff6ce78adecdcd7645869d6fe90029",
+  "sourceMap": "244:291:1:-;;;338:195;8:9:-1;5:2;;;30:1;27;20:12;5:2;338:195:1;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;338:195:1;;;;;;;;;;;;;;;;426:10;418:5;;:18;;;;;;;;;;;;;;;;;;490:14;474:13;;:30;;;;;;;;;;;;;;;;;;338:195;244:291;;;;;;",
+  "deployedSourceMap": "244:291:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;302:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;302:29:1;;;;;;;;;;;;;;;;;;;;;;;;;;;276:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;276:20:1;;;;;;;;;;;;;;;;;;;;;;;;;;;302:29;;;;;;;;;;;;;:::o;276:20::-;;;;;;;;;;;;;:::o",
+  "source": "// BiddingContract: Takes care of all the bidding business logic and admin related permissions\n \npragma solidity >=0.4.21 <0.6.0;\n\n// import the ASS token\nimport \"./AucSters.sol\";\n\n// SafeMath for Ops Utils\nimport \"../libraries/SafeMath.sol\";\n\ncontract BiddingContract {\n\n    address public admin;\n    AucSters public tokenContract;\n\n    constructor(AucSters _tokenContract) public {\n        //Assign an admin\n        admin = msg.sender;\n\n        // token Contract \n        tokenContract = _tokenContract;\n        //Token price\n    }\n}",
+  "sourcePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/BiddingContract.sol",
+  "ast": {
+    "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/BiddingContract.sol",
+    "exportedSymbols": {
+      "BiddingContract": [
+        266
+      ]
+    },
+    "id": 267,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 244,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "97:32:1"
+      },
+      {
+        "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
+        "file": "./AucSters.sol",
+        "id": 245,
+        "nodeType": "ImportDirective",
+        "scope": 267,
+        "sourceUnit": 243,
+        "src": "155:24:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/libraries/SafeMath.sol",
+        "file": "../libraries/SafeMath.sol",
+        "id": 246,
+        "nodeType": "ImportDirective",
+        "scope": 267,
+        "sourceUnit": 456,
+        "src": "207:35:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 266,
+        "linearizedBaseContracts": [
+          266
+        ],
+        "name": "BiddingContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 248,
+            "name": "admin",
+            "nodeType": "VariableDeclaration",
+            "scope": 266,
+            "src": "276:20:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 247,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "276:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 250,
+            "name": "tokenContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 266,
+            "src": "302:29:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AucSters_$242",
+              "typeString": "contract AucSters"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 249,
+              "name": "AucSters",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 242,
+              "src": "302:8:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AucSters_$242",
+                "typeString": "contract AucSters"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 264,
+              "nodeType": "Block",
+              "src": "382:151:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 258,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 255,
+                      "name": "admin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 248,
+                      "src": "418:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 256,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 470,
+                        "src": "426:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 257,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "426:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "418:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 259,
+                  "nodeType": "ExpressionStatement",
+                  "src": "418:18:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 262,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 260,
+                      "name": "tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 250,
+                      "src": "474:13:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AucSters_$242",
+                        "typeString": "contract AucSters"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 261,
+                      "name": "_tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 252,
+                      "src": "490:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AucSters_$242",
+                        "typeString": "contract AucSters"
+                      }
+                    },
+                    "src": "474:30:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AucSters_$242",
+                      "typeString": "contract AucSters"
+                    }
+                  },
+                  "id": 263,
+                  "nodeType": "ExpressionStatement",
+                  "src": "474:30:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 265,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 253,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 252,
+                  "name": "_tokenContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 265,
+                  "src": "350:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AucSters_$242",
+                    "typeString": "contract AucSters"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 251,
+                    "name": "AucSters",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 242,
+                    "src": "350:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AucSters_$242",
+                      "typeString": "contract AucSters"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "349:25:1"
+            },
+            "returnParameters": {
+              "id": 254,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "382:0:1"
+            },
+            "scope": 266,
+            "src": "338:195:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 267,
+        "src": "244:291:1"
+      }
+    ],
+    "src": "97:438:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/BiddingContract.sol",
+    "exportedSymbols": {
+      "BiddingContract": [
+        266
+      ]
+    },
+    "id": 267,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 244,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "97:32:1"
+      },
+      {
+        "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/contracts/AucSters.sol",
+        "file": "./AucSters.sol",
+        "id": 245,
+        "nodeType": "ImportDirective",
+        "scope": 267,
+        "sourceUnit": 243,
+        "src": "155:24:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dibs/Desktop/consensys_doc/proyecto-contract-design-AucAuc/libraries/SafeMath.sol",
+        "file": "../libraries/SafeMath.sol",
+        "id": 246,
+        "nodeType": "ImportDirective",
+        "scope": 267,
+        "sourceUnit": 456,
+        "src": "207:35:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 266,
+        "linearizedBaseContracts": [
+          266
+        ],
+        "name": "BiddingContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 248,
+            "name": "admin",
+            "nodeType": "VariableDeclaration",
+            "scope": 266,
+            "src": "276:20:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 247,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "276:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 250,
+            "name": "tokenContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 266,
+            "src": "302:29:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AucSters_$242",
+              "typeString": "contract AucSters"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 249,
+              "name": "AucSters",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 242,
+              "src": "302:8:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AucSters_$242",
+                "typeString": "contract AucSters"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 264,
+              "nodeType": "Block",
+              "src": "382:151:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 258,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 255,
+                      "name": "admin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 248,
+                      "src": "418:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 256,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 470,
+                        "src": "426:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 257,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "426:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "418:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 259,
+                  "nodeType": "ExpressionStatement",
+                  "src": "418:18:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 262,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 260,
+                      "name": "tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 250,
+                      "src": "474:13:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AucSters_$242",
+                        "typeString": "contract AucSters"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 261,
+                      "name": "_tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 252,
+                      "src": "490:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AucSters_$242",
+                        "typeString": "contract AucSters"
+                      }
+                    },
+                    "src": "474:30:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AucSters_$242",
+                      "typeString": "contract AucSters"
+                    }
+                  },
+                  "id": 263,
+                  "nodeType": "ExpressionStatement",
+                  "src": "474:30:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 265,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 253,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 252,
+                  "name": "_tokenContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 265,
+                  "src": "350:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AucSters_$242",
+                    "typeString": "contract AucSters"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 251,
+                    "name": "AucSters",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 242,
+                    "src": "350:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AucSters_$242",
+                      "typeString": "contract AucSters"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "349:25:1"
+            },
+            "returnParameters": {
+              "id": 254,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "382:0:1"
+            },
+            "scope": 266,
+            "src": "338:195:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 267,
+        "src": "244:291:1"
+      }
+    ],
+    "src": "97:438:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {
+    "1547830326418": {
+      "events": {},
+      "links": {},
+      "address": "0x632F577Fc5CD53579Da8c3638B57f61CE4A73bc1",
+      "transactionHash": "0x1ab4c67e6280dea0a24a59b3e52cc164b43c72595ec2650e2cd4d771aa48610d"
+    }
+  },
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-19T22:22:54.036Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -3,8 +3,8 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 // SafeMath for Ops Utils
-import "./SafeMath.sol";
+import "../libraries/SafeMath.sol";
 
 contract SupplyChain {
-    
+
 }
