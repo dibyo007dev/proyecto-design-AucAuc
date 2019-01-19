@@ -190,11 +190,7 @@ contract("AucSters", function(accounts) {
         return tokenInstance.allowance(accounts[0], accounts[2]);
       })
       .then(allowance => {
-        assert.equal(
-          allowance,
-          100,
-          " allowance updated before from transaction"
-        );
+        assert.equal(allowance, 100, " allowance updated before transaction");
         return tokenInstance.transferFrom.call(accounts[0], accounts[2], 50, {
           from: accounts[1]
         });
