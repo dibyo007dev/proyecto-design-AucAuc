@@ -3283,12 +3283,24 @@
     "1547830326418": {
       "events": {},
       "links": {},
-      "address": "0xb80c557B6ffa71F5b14C91Df0afBE58Ba5638d70",
-      "transactionHash": "0x67820e729bf2f7e09d64c326e54000703c5aaa765ce7c1ec9dd2fcdd8984a4a1"
+      "address": "0x94467F46c9eeA456cFa252Ab8Da6a11ADd40BB6C",
+      "transactionHash": "0xe842595afa52140b10c024988c06e1056e9a749c4adcae0879eb80116c79089e"
+    },
+    "1548018420239": {
+      "events": {},
+      "links": {},
+      "address": "0x1295db3e614d797ec2ceEA42B1F2cEE10502E999",
+      "transactionHash": "0xcfc0ad630f3756aa573a17e645f099c599f4681330755e93abb22afe6ccac640"
+    },
+    "1548175821378": {
+      "events": {},
+      "links": {},
+      "address": "0x5726a75a9380e35CF6a5d5B145479D66A2420750",
+      "transactionHash": "0xa69c2a6832bff17c41737ade73954443effbee2d69b6439dda0310afee7520fd"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-19T22:22:54.038Z",
+  "updatedAt": "2019-01-22T17:02:22.410Z",
   "devdoc": {
     "details": "Unsigned math operations with safety checks that revert on error",
     "methods": {},
