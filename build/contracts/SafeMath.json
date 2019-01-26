@@ -3295,12 +3295,18 @@
     "1548175821378": {
       "events": {},
       "links": {},
-      "address": "0x5726a75a9380e35CF6a5d5B145479D66A2420750",
-      "transactionHash": "0xa69c2a6832bff17c41737ade73954443effbee2d69b6439dda0310afee7520fd"
+      "address": "0x501dfe70D8b4566504f73aAc6D7dC47Ab6DD8f13",
+      "transactionHash": "0xfad747dcfb3e19cacfb35e73647613b7370db92a9e461d3f04e6da11c8f410cf"
+    },
+    "1548457443781": {
+      "events": {},
+      "links": {},
+      "address": "0x4E790Eda00E4957Bd9bff0EE4f22Ef97Fe464e35",
+      "transactionHash": "0xf9cc2078702dea78bac8b8c72f2853562668abdf73282b33c2fcd06d089cb7ff"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-22T17:02:22.410Z",
+  "updatedAt": "2019-01-25T23:48:45.813Z",
   "devdoc": {
     "details": "Unsigned math operations with safety checks that revert on error",
     "methods": {},

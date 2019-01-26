@@ -12,7 +12,7 @@ contract BiddingContract {
 
     using SafeMath for uint; 
 
-    address admin;
+    address payable admin;
     AucSters public tokenContract;
     uint256 public tokenPrice;
     uint256 public tokensSold;
@@ -36,7 +36,7 @@ contract BiddingContract {
         string productName;
         bool isAvailable;
         uint32 bidSession;
-
+        string productImage;
     }
 
 
@@ -45,23 +45,21 @@ contract BiddingContract {
     mapping(address => Seller) registeredSeller;
 
     // ** product-mappings : a registered seller has multiple products
-    
-    // for getting all the products of a perticular seller
-    mapping(address => Product) public products;
 
     //lookup for the owner of product with productId
     mapping(uint => address) public productIdToOwner;
+    mapping(address => uint) public productCount;
 
     //get product details with specific productId
-    mapping(uint => Product) public product;
+    mapping(uint => Product) product;
 
     //latest bid tracker
-    mapping(address => mapping(uint => uint)) latestBidStore;
+    mapping(address => mapping(uint => uint)) public latestBidStore;
 
 
     //ARRAYS
     address[] public regSellers;
-    Product[] public productsForSale;
+    Product[] productsForSale;
     address[] public bidders;
 
 
@@ -96,7 +94,11 @@ contract BiddingContract {
     );
 
     event NewProductAdded( address indexed _sellerId,
-                           uint _productId
+                           uint indexed _productId,
+                           string productName,
+                           uint bidStartTime,
+                           bool indexed isAvailable,
+                           uint bidSession
     );
 
 
@@ -113,10 +115,9 @@ contract BiddingContract {
     }
 
     function buyTokens(uint256 _numberOfTokens) public payable {
-        uint price = _numberOfTokens.mul(tokenPrice);
-        require(msg.value == price, "buyer doesn't sent sufficient funds");
-        require(tokenContract.balanceOf(address(this)) >= _numberOfTokens, "contract dont have enough balance");
-        require(tokenContract.transfer(msg.sender, _numberOfTokens), "cannot transfer the tokens");
+        require(msg.value == _numberOfTokens.mul(tokenPrice), "correct amount of ether not sent");
+        require(tokenContract.balanceOf(address(this)) >= _numberOfTokens, "tokens not available");
+        require(tokenContract.transfer(msg.sender, _numberOfTokens), "tokens not sent");
 
         tokensSold = tokensSold.add(_numberOfTokens);
 
@@ -127,7 +128,8 @@ contract BiddingContract {
         require(msg.sender == admin,"only admin can end the token sale");
         require(tokenContract.transfer(admin, tokenContract.balanceOf(address(this))),"balance not transferring");
 
-        selfdestruct(msg.sender);
+        //selfdestruct(msg.sender);
+        admin.transfer(address(this).balance);
     }
 
     // registration of seller from the admin
@@ -150,40 +152,43 @@ contract BiddingContract {
         return( registeredSeller[_address].sellerId, registeredSeller[_address].sellerName);
     }
 
+    // function getProductForSale() public pure returns(Product[] memory prods){
+    //     prods = productsForSale;
+    //     return(prods);
+    // }
+
     // registered sellers can add products for bidding
     function addProductForBid(uint _productId, string memory _productName, uint256 _bidStartPrice, uint32 _sessionValue) public isRegisteredSeller(msg.sender) returns(bool){
-        //update the mapping
-        products[msg.sender].productId = _productId;
-        products[msg.sender].productName = _productName;
-        products[msg.sender].bidStartPrice = _bidStartPrice;
-        products[msg.sender].isAvailable = true;
-        products[msg.sender].bidStartTime = uint32(now);
-        products[msg.sender].bidSession = _sessionValue; // in seconds
-
-
 
         // update the product mapping
         product[_productId].productName = _productName;
         product[_productId].bidStartPrice = _bidStartPrice;
         product[_productId].isAvailable = true;
+        product[_productId].bidStartTime = uint32(now);
+        product[_productId].isAvailable = true;
+        product[_productId].bidSession = _sessionValue;
+
 
         // Update the all product array
         Product memory newProduct;
         newProduct.productId = _productId;
         newProduct.productName = _productName;
         newProduct.bidStartPrice = _bidStartPrice;
+        newProduct.bidStartTime = uint32(now);
         newProduct.isAvailable = true;
+        newProduct.bidSession = _sessionValue;
 
 
         productsForSale.push(newProduct) - 1;
 
         productIdToOwner[_productId] = msg.sender;
+        productCount[msg.sender] += 1;
 
         //Initial Bid price is set to the mapping
         latestBidStore[msg.sender][_productId] = _bidStartPrice;
 
         // emit an product added event
-        emit NewProductAdded(msg.sender, _productId);
+        emit NewProductAdded(msg.sender, _productId, _productName, _bidStartPrice, true, _sessionValue);
 
         return true;
     }
@@ -200,7 +205,13 @@ contract BiddingContract {
             // check if bid is higher than previous bid event 
         require(latestBidStore[msg.sender][_productId] > _bidValue, "must bid a larger amount");
             //  transfer the token for locking 
-        tokenContract.approve(address(this), _bidValue);
+        
+       // ** approve should be called first  ** 
+       // tokenContract.approve(address(this), _bidValue);
+
+       // check if approve has been called
+
+        require(tokenContract.allowance(msg.sender,address(this)) == _bidValue, "not approved yet");
 
         tokenContract.transferFrom(msg.sender, address(this), _bidValue);
 
@@ -209,6 +220,8 @@ contract BiddingContract {
             // update the bidding array
         bidders.push(msg.sender) - 1;
         product[_productId].latestBid.bidders_address = msg.sender;
+        product[_productId].latestBid.productId = _productId;
+
         product[_productId].latestBid.bidValue = _bidValue;
 
             //  trigger event on every update 
@@ -229,19 +242,17 @@ contract BiddingContract {
         // return the rest of bidders' tokens locked 
         for(uint i = 0;i < bidders.length;i++) {
             // find and refund the bidders who have got their token locked for the auction and did not won the product
-            if(latestBidStore[bidders[i]][_productId] != 0 && latestBidStore[bidders[i]][_productId] != product[_productId].latestBid.bidValue) {
+            address bid_addr = bidders[i];
+            if(latestBidStore[bid_addr][_productId] != 0 && latestBidStore[bid_addr][_productId] != product[_productId].latestBid.bidValue) {
                 // process the return
-                tokenContract.transfer(bidders[i], latestBidStore[bidders[i]][_productId]);          
-            }
-            else if(latestBidStore[bidders[i]][_productId] != 0 && latestBidStore[bidders[i]][_productId] == product[_productId].latestBid.bidValue) {
-                // max bid is sent to the seller
-                tokenContract.transfer(msg.sender, latestBidStore[bidders[i]][_productId]);
+                tokenContract.transfer(bid_addr, latestBidStore[bid_addr][_productId]);          
             }
         }
+        tokenContract.transfer(product[_productId].latestBid.bidders_address,product[_productId].latestBid.bidValue);
         
         // UPGRADE : supplychain triggered on Bid Finalization, 
         //           approve the supply chain to ... onSuccess() -> transfer money to the seller
-        //           on failure -> refund back to buyer
+        //              on failure -> refund back to buyer
 
     }
 
