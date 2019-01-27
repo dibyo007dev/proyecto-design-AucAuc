@@ -1,4 +1,4 @@
-// BiddingContract: Takes care of all the bidding business logic and admin related permissions
+/// BiddingContract: Takes care of all the bidding business logic and admin related permissions
  
 pragma solidity >=0.4.21 <0.6.0;
 
@@ -8,7 +8,11 @@ import "./AucSters.sol";
 // SafeMath for Ops Utils
 import "../libraries/SafeMath.sol";
 
+// It handles all the trade-offs needed: Token Buying, 
 contract BiddingContract {
+
+    // state variables
+    bool private stopped = false;
 
     using SafeMath for uint; 
 
@@ -78,6 +82,13 @@ contract BiddingContract {
         require(now < product[_productId].bidSession + product[_productId].bidStartTime, "Timeout occured for the product");
         _;
     }
+
+    /** modifiers used as a  circuit breaker in the contract
+        we can end the token sale when needed => no bidding can occur
+    */
+    modifier stopInEmergency { if (!stopped) _; }
+    modifier onlyInEmergency { if (stopped) _; }
+
     //events
     event TokenSold(address indexed _customer,
                     uint _numberOfTokens
@@ -101,8 +112,6 @@ contract BiddingContract {
                            uint bidSession
     );
 
-
-
     constructor(AucSters _tokenContract, uint _tokenPrice) public {
         //Assign an admin
         admin = msg.sender;
@@ -113,8 +122,14 @@ contract BiddingContract {
         //Token price
         tokenPrice = _tokenPrice;
     }
+    
+    // It stops the token buying and ends the sale 
+    function StopContract() onlyOwner public {
+        stopped = true;
+    }
 
-    function buyTokens(uint256 _numberOfTokens) public payable {
+    // Buying AucSters Token for bidding
+    function buyTokens(uint256 _numberOfTokens) public stopInEmergency payable {
         require(msg.value == _numberOfTokens.mul(tokenPrice), "correct amount of ether not sent");
         require(tokenContract.balanceOf(address(this)) >= _numberOfTokens, "tokens not available");
         require(tokenContract.transfer(msg.sender, _numberOfTokens), "tokens not sent");
@@ -123,8 +138,8 @@ contract BiddingContract {
 
         emit TokenSold(msg.sender, _numberOfTokens);
     }
-
-    function endSupply() public {
+    // Ending the supply
+    function endSupply() onlyInEmergency public {
         require(msg.sender == admin,"only admin can end the token sale");
         require(tokenContract.transfer(admin, tokenContract.balanceOf(address(this))),"balance not transferring");
 
@@ -151,11 +166,6 @@ contract BiddingContract {
     function getSeller(address _address) public view returns(uint, string memory){
         return( registeredSeller[_address].sellerId, registeredSeller[_address].sellerName);
     }
-
-    // function getProductForSale() public pure returns(Product[] memory prods){
-    //     prods = productsForSale;
-    //     return(prods);
-    // }
 
     // registered sellers can add products for bidding
     function addProductForBid(uint _productId, string memory _productName, uint256 _bidStartPrice, uint32 _sessionValue) public isRegisteredSeller(msg.sender) returns(bool){
@@ -228,15 +238,13 @@ contract BiddingContract {
         emit Bidding(_productId,msg.sender, _bidValue);
     }
 
+    // It finalizes the higest bid value and returns all the tokens to respective bidders who havn;t won the bid
     // on Session end called by the Seller
-
     function finalizeBid(uint _productId) public returns(bool) {
         // check if called by the product seller only 
         require(productIdToOwner[_productId] == msg.sender, "seller can only finalize the bid");
         // check if session is timed out or not 
         require(now > product[_productId].bidSession + product[_productId].bidStartTime, "cannot finalize");
-        // finalize price of higest bid // last bidder
-
         //product no more available
         product[_productId].isAvailable = false;
         // return the rest of bidders' tokens locked 
@@ -255,7 +263,4 @@ contract BiddingContract {
         //              on failure -> refund back to buyer
 
     }
-
-    // supply chain and locking 
-
 }
