@@ -6570,10 +6570,16 @@
       "links": {},
       "address": "0x39e6C41ff4906367F6330f540e8E696163f9bb69",
       "transactionHash": "0x585ec858d862b878dbeff6e209f3d8f96c1816f514ec691ab553064fca96a58b"
+    },
+    "1548612470090": {
+      "events": {},
+      "links": {},
+      "address": "0x1d036B588EF02a4912F2c51841FE765abaB1E5dA",
+      "transactionHash": "0x7af70152c8f4f8390f507096abb2ecc41085f57b4a3691641dbc52f3c386a03d"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-25T23:48:45.815Z",
+  "updatedAt": "2019-01-27T18:08:06.506Z",
   "devdoc": {
     "methods": {}
   },
